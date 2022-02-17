@@ -21,16 +21,15 @@ export default {
       });
         
 
-      myHeaders.append("Content-Type", "application/json");
-      myHeaders.append("content-type", "application/json");
-      myHeaders.append("Content-Length", content_to_send.length.toString());
-      myHeaders.append("X-Custom-Header", "ProcessThisImmediately");
+      myHeaders.set("content-type", "application/json");
+      myHeaders.set("Content-Length", content_to_send.length.toString());
+      myHeaders.set("X-Custom-Header", "ProcessThisImmediately");
 
-      
+      console.log()
       let myInit = { 
         method: 'POST',
         headers: myHeaders,
-        mode: 'no-cors',
+        mode: 'cors', // no-cors não funcina bem.
         body: content_to_send,
         cache: 'default' 
       };
