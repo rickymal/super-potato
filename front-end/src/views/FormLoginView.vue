@@ -46,6 +46,8 @@ export default {
           if(contentType && contentType.indexOf("application/json") !== -1) {
             return response.json().then((json) => {
               localStorage.setItem('token',json.hash)
+              this.$router.push("/")
+              // https://router.vuejs.org/guide/#javascript
             });
           } else {
 
