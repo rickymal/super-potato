@@ -38,10 +38,14 @@ export default {
       let myRequest = new Request('http://localhost:3003/login', myInit);
       fetch(myRequest)
         .then(function(response) {
+
+
+
           var contentType = response.headers.get("content-type");
+          console.log({contentType})
           if(contentType && contentType.indexOf("application/json") !== -1) {
             return response.json().then((json) => {
-              
+              localStorage.setItem('token',json.hash)
             });
           } else {
 
