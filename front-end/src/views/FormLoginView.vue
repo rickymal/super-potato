@@ -1,31 +1,39 @@
 <script setup>
 import TheWelcome from "@/components/TheWelcome.vue";
+import router from '../router'
+import HelloWorld from "@/components/HelloWorld.vue";
 </script>
 
 
+
 <script>
+
+
+async function mock_fetch() {
+    return {
+      header: "0159483186168168"
+    }
+}
+
 export default {
   methods : {
     make_submition(event) {
       event.preventDefault()
-
-      console.log('iniciando a submissão','oi')
+      console.log({ this : this})
       const email = this.email_description
       const password = this.password_description
-
-      let myHeaders = new Headers();
-
 
       var content_to_send = JSON.stringify({
         email, password
       });
-        
 
+      // inicio para envio dos dados
+      let myHeaders = new Headers();
       myHeaders.set("content-type", "application/json");
       myHeaders.set("Content-Length", content_to_send.length.toString());
       myHeaders.set("X-Custom-Header", "ProcessThisImmediately");
-
-      console.log()
+      const token = localStorage.getItem('token')
+      myHeaders.set("token", token);
       let myInit = { 
         method: 'POST',
         headers: myHeaders,
@@ -33,26 +41,23 @@ export default {
         body: content_to_send,
         cache: 'default' 
       };
-      
-
       let myRequest = new Request('http://localhost:3003/login', myInit);
+      // mock_fetch(myRequest)
       fetch(myRequest)
-        .then(function(response) {
-
-
-
+        .then((response) => {
           var contentType = response.headers.get("content-type");
           console.log({contentType})
           if(contentType && contentType.indexOf("application/json") !== -1) {
             return response.json().then((json) => {
               localStorage.setItem('token',json.hash)
+              console.log({router: this.$router})
               this.$router.push("/")
               // https://router.vuejs.org/guide/#javascript
             });
           } else {
-
           }
-        });
+      });
+      // fim do envio dos dados
     }
   }
 }
