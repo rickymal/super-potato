@@ -50,3 +50,11 @@ export default {
   <h1>oi</h1>
   <button @click="teste()">teste</button>
 </template>
+
+
+
+<style>
+
+</style>
+
+

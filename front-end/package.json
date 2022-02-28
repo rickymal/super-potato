@@ -1,7 +1,9 @@
 {
   "name": "vue-project",
   "version": "0.0.0",
-  "eslintIgnore" : ["*.vue"],
+  "eslintIgnore": [
+    "*.vue"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -13,6 +15,8 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "@tiptap/starter-kit": "^2.0.0-beta.183",
+    "@tiptap/vue-3": "^2.0.0-beta.90",
     "vue": "^3.2.29",
     "vue-router": "^4.0.12"
   },
