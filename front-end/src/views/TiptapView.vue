@@ -6,6 +6,6 @@ import Tiptap from '@/components/Tiptap.vue'
 
 <template>
   <Tiptap/>
-  <ControllerPanel/>
+  <!-- <ControllerPanel/> -->
 </template>
 

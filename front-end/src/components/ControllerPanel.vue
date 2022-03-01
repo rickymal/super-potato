@@ -58,13 +58,7 @@ export default {
 
 
 <style>
-  div.container-div-content {
-    background-color: aquamarine;
-  }
 
-  div.container-div-content {
-    align-self: flex-end; 
-  }
 </style>
 
 
