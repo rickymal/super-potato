@@ -1,4 +1,5 @@
 <template>
+<div class="container">
   <editor-content :editor="editor" />
   <div class="d-flex flex-row-reverse">
     <div class="p-2">
@@ -8,6 +9,8 @@
       <button class="btn btn-primary" @click="recover()">Recuperar</button>
     </div>
   </div>
+  
+</div>
 </template>
 
 
@@ -40,12 +43,12 @@ export default {
     send() {
       // inicio para envio dos dados
       const content_to_send = this.editor.getJSON()
+      const content_to_send_as_string = JSON.stringify(content_to_send)
       console.log("Conteudo em json")
       console.log(content_to_send)
-      return 
       let myHeaders = new Headers();
       myHeaders.set("content-type", "application/json");
-      myHeaders.set("Content-Length", content_to_send.length.toString());
+      myHeaders.set("Content-Length", content_to_send_as_string.length.toString());
       myHeaders.set("X-Custom-Header", "ProcessThisImmediately");
       const token = localStorage.getItem('token')
       myHeaders.set("token", token);
@@ -53,15 +56,14 @@ export default {
         method: 'POST',
         headers: myHeaders,
         mode: 'cors', // no-cors não funcina bem.
-        body: content_to_send,
+        body: content_to_send_as_string,
         cache: 'default' 
       };
-      let myRequest = new Request('http://localhost:3003/', myInit);
+      let myRequest = new Request('http://localhost:3003/api/send_notebook', myInit);
       // mock_fetch(myRequest)
       fetch(myRequest)
         .then((response) => {
           var contentType = response.headers.get("content-type");
-          console.log({contentType})
           if(contentType && contentType.indexOf("application/json") !== -1) {
             return response.json().then((json) => {
               console.log({json})
@@ -103,14 +105,18 @@ export default {
   background-color: rgb(224, 220, 220);
   padding: 15px 10px;
   /* line-height: 20px; */
-  margin: 10px 00px;
   /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
-  /* font-family: cursive; */
+  font-family: cursive;
 }
 
 .tiptap-component ul li {
   margin-bottom: 0px;
   padding: 0px;
+}
+
+.tiptap-component > p {
+  margin-bottom: 10px;
+  text-align: justify;
 }
 
 .tiptap-component:focus {

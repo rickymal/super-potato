@@ -32,8 +32,10 @@ export default {
       myHeaders.set("content-type", "application/json");
       myHeaders.set("Content-Length", content_to_send.length.toString());
       myHeaders.set("X-Custom-Header", "ProcessThisImmediately");
-      const token = localStorage.getItem('token')
-      myHeaders.set("token", token);
+      // Para um login, o token presente no servidor é desnecessário
+      // const token = localStorage.getItem('token')
+      const token = null
+      // myHeaders.set("token", token);
       let myInit = { 
         method: 'POST',
         headers: myHeaders,
