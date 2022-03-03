@@ -1,7 +1,7 @@
 <template>
 <div class="container">
   <editor-content :editor="editor" />
-  <div class="d-flex flex-row-reverse">
+  <div class="d-flex flex-row-reverse container-btn-01">
     <div class="p-2">
       <button class="btn btn-primary" @click="send()">Enviar</button>
     </div>
@@ -98,24 +98,40 @@ export default {
 
 
 <style>
+
+
+div.container-btn-01 {
+  padding-top: 1rem;
+}
+
+button.btn-primary {
+  background-color: rgb(224, 220, 220);
+  border: 0;
+  color: black;
+}
+
 .tiptap-component {
-  border-width: thin;
-  border: 0px;
+  
   min-height: 300px;
   background-color: rgb(224, 220, 220);
   padding: 15px 10px;
   /* line-height: 20px; */
   /* font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
   font-family: cursive;
+  
 }
 
-.tiptap-component ul li {
+div.tiptap-component {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.tiptap-component ul li p {
   margin-bottom: 0px;
   padding: 0px;
 }
 
 .tiptap-component > p {
-  margin-bottom: 10px;
+  margin-bottom: 0px;
   text-align: justify;
 }
 

@@ -1,3 +1,15 @@
+# Task
+- [x] Estilização do front-end para deixa-lo mais decente
+- [x] Fazer com que o registro também seja um login para evitar criar usuários duplicados
+- [x] Realizar limpeza de código
+  - [x] Colocar tipagens corretamente
+  - [x] Limpezar no geral (identação, comentários desnecessários, etc)
+- [ ] Construção dos testes no Cypress e no back-end (c/ Jest)
+- [ ] Construção da imagem docker
+- [ ] Publicar no heroku ou qualquer outro lugar (IBM CLoud, Azure (preferível), etc)
+
+
+
 # vue-project
 
 This template should help get you started developing with Vue 3 in Vite.
